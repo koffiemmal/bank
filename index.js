@@ -1,0 +1,163 @@
+/* let comptes = [];
+/* crediter() {
+    let credit = Number(prompt("de combien voudrez vous creditez le compte"))
+    this.solde = this.solde + credit;
+/* } */
+//let divElt = document.createElement("div")/* /* /* 
+/* class compte {
+    constructor(id, nom, prenom, age, type) {
+
+        this.id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.age = age;
+        this.type = type;
+    }
+    solde = 0;
+
+
+} */
+
+/* let kodjo = new compte(1, "kdjo", "jkdio", 19, "epargne");
+console.log(kodjo) */
+
+//creation de compte par bouton 
+let div_button = document.createElement("div")
+div_button.style.display = "flex"
+div_button.style.justifyContent = "center"
+let btn = document.createElement("button")
+btn.textContent = "ajouter un compte    "
+document.body.appendChild(div_button)
+div_button.appendChild(btn)
+let comptes = []
+btn.addEventListener("click", (e) => {
+
+
+
+
+
+    let nom = prompt("entrer le nom ")
+    let prenom = prompt("entrer le prenom")
+    let age = Number(prompt("entrer l'age"))
+    let profession = prompt("entrer votre profession")
+    let type = prompt("entrer le type du compte")
+    let solde = document.createElement("p")
+    solde.textContent = "solde=0";
+
+
+
+
+
+
+    comptes.push(nom, prenom, type)
+
+    let compte = document.createElement('section')
+
+    document.body.appendChild(compte)
+
+    let GrandDiv = document.createElement("div")
+
+    compte.appendChild(GrandDiv)
+
+    let divElt = document.createElement("div")
+
+    GrandDiv.appendChild(divElt)
+
+    let div_2_Elt = document.createElement("div")
+
+    let divdiv_elt = document.createElement("div")
+
+    GrandDiv.appendChild(divdiv_elt)
+
+    GrandDiv.appendChild(div_2_Elt)
+
+    divdiv_elt.appendChild(divElt)
+
+    let table = document.createElement("table")
+
+    divElt.appendChild(table)
+
+    let tr = document.createElement("tr");
+
+    table.appendChild(tr)
+
+    console.log(comptes)
+    compte.style.display = "flex"
+    compte.style.justifyContent = "center"
+
+    GrandDiv.style.border = "1px solid black"
+
+    divdiv_elt.style.border = "1px solid black"
+
+    divElt.style.border = "1px solid red"
+
+    GrandDiv.style.display = "flex"
+
+    GrandDiv.style.justifyContent = "center"
+
+    GrandDiv.style.alignItems = "center"
+    GrandDiv.style.width = "60%"
+
+    table.style.border = "1px solid blue"
+    table.style.backgroundColor = "aqua"
+    table.style.width = "100%"
+
+
+    div_2_Elt.style.display = "flex"
+    div_2_Elt.style.flexDirection = "column"
+    div_2_Elt.style.justifyContent = "space-around"
+    div_2_Elt.style.height = "100%"
+    div_2_Elt.style.alignItems = "center"
+    div_2_Elt.style.width = "20%"
+    div_2_Elt.style.backgroundColor = "grey"
+    GrandDiv.style.backgroundColor = "grey"
+
+    for (let a of comptes) {
+        let td = document.createElement("td");
+        td.textContent = a
+        tr.appendChild(td)
+
+    }
+    console.log(tr)
+
+    divElt.appendChild(solde)
+
+    let crediter = document.createElement("button")
+
+    div_2_Elt.appendChild(crediter)
+
+    crediter.textContent = "crediter"
+    crediter.addEventListener("click", (e) => {
+
+        solde.textContent = (prompt("entrer la valeur du credit "))
+
+    })
+    let transaction = document.createElement('button')
+    div_2_Elt.appendChild(transaction)
+    transaction.textContent = "transaction"
+
+    let depot = (id, solde) => {
+
+    }
+    transaction.addEventListener("click", (e) => {
+
+
+    })
+    let supprimer = document.createElement("button")
+
+    div_2_Elt.appendChild(supprimer)
+    supprimer.textContent = "supprimer"
+    supprimer.addEventListener("click", (e) => {
+        GrandDiv.textContent = "";
+        divElt.textContent = "";
+        divdiv_elt.textContent = "";
+        div_2_Elt.textContent = "";
+    })
+
+
+    comptes.splice(1, 1)
+    comptes.splice(1, 2)
+    comptes.splice(1, 3)
+    comptes.pop()
+
+})
