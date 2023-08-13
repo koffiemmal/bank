@@ -22,6 +22,7 @@
 console.log(kodjo) */
 
 //creation de compte par bouton 
+
 let div_button = document.createElement("div")
 div_button.style.display = "flex"
 div_button.style.justifyContent = "center"
@@ -42,14 +43,28 @@ btn.addEventListener("click", (e) => {
     let profession = prompt("entrer votre profession")
     let type = prompt("entrer le type du compte")
     let solde = document.createElement("p")
-    solde.textContent = "solde=0";
-
-
-
-
-
-
+    let ecris_solde = document.createElement("p")
+    ecris_solde.textContent = "solde:"
+    solde.textContent = 0;
     comptes.push(id, nom, prenom, type)
+        /*     class comptess {
+                constructor(id, nom, prenom, age, profession, type, solde) {
+                    this.id = id;
+                    this.nom = nom;
+                    this.prenom = prenom;
+                    this.age = age;
+                    this.profession = profession;
+                    this.type = type;
+                    this.solde = solde;
+
+
+
+
+
+
+                } */
+        /* } */
+
 
     let compte = document.createElement('section')
 
@@ -81,7 +96,7 @@ btn.addEventListener("click", (e) => {
 
     table.appendChild(tr)
 
-    console.log(comptes)
+    console.log(comptes);
     compte.style.display = "flex"
     compte.style.justifyContent = "center"
 
@@ -118,7 +133,8 @@ btn.addEventListener("click", (e) => {
         tr.appendChild(td)
 
     }
-    console.log(tr)
+    console.log(tr);
+    divElt.appendChild(ecris_solde)
 
     divElt.appendChild(solde)
 
@@ -131,31 +147,44 @@ btn.addEventListener("click", (e) => {
 
         solde.textContent = (prompt("entrer la valeur du credit "))
 
-    })
-    let transaction = document.createElement('button')
-    div_2_Elt.appendChild(transaction)
+    });
+    let transaction = document.createElement('button');
+    div_2_Elt.appendChild(transaction);
     transaction.textContent = "transaction"
 
-
-
     transaction.addEventListener("click", (e) => {
-        comptes.id = prompt("entrer l'id du destinataire")
+        let idcomptes = Number(prompt("entrer l'id du destinataire"));
+
         let motant_a_envoyer = Number(prompt("entrer le motant a envoyer"));
         type = prompt("de quel type de compte disposer vous?");
+        let solde_actuel;
+        solde_actuel = solde.textContent;
+        if (comptes.id == idcomptes) {
+            console.log("st laa")
+        } else {
+            console.log("riennnnn")
+        }
         switch (type) {
+
             case "epargne":
+
+
                 solde.textContent = solde.textContent - (motant_a_envoyer + ((motant_a_envoyer * 30) / 100))
                 if (solde.textContent < 0) {
                     alert("votre solde est insuffisant entrer un moment alors plus bas ok?")
+                    solde.textContent = solde_actuel
+
                 }
 
 
                 break;
             case "courant":
+
                 solde.textContent = solde.textContent - (motant_a_envoyer + ((motant_a_envoyer * 10) / 100))
                 if (solde.textContent < 0) {
                     alert("votre solde est insuffisant entrer un moment alors plus bas ok?")
-                    solde.textContent = prompt("recrediter votre compte")
+                    solde.textContent = solde_actuel
+
                 }
 
                 break;
@@ -163,7 +192,8 @@ btn.addEventListener("click", (e) => {
                 solde.textContent = solde.textContent - (motant_a_envoyer)
                 if (solde.textContent < 0) {
                     alert("votre solde est insuffisant entrer un moment alors plus bas ok?")
-                    solde.textContent = prompt("recrediter votre compte")
+                    solde.textContent = solde_actuel
+
                 }
 
                 break;
@@ -176,6 +206,8 @@ btn.addEventListener("click", (e) => {
 
 
     });
+
+
     let supprimer = document.createElement("button")
 
     div_2_Elt.appendChild(supprimer);
