@@ -35,7 +35,7 @@ btn.addEventListener("click", (e) => {
 
 
 
-
+    let id = Number(prompt("entrer votre id"));
     let nom = prompt("entrer le nom ")
     let prenom = prompt("entrer le prenom")
     let age = Number(prompt("entrer l'age"))
@@ -49,7 +49,7 @@ btn.addEventListener("click", (e) => {
 
 
 
-    comptes.push(nom, prenom, type)
+    comptes.push(id, nom, prenom, type)
 
     let compte = document.createElement('section')
 
@@ -136,16 +136,49 @@ btn.addEventListener("click", (e) => {
     div_2_Elt.appendChild(transaction)
     transaction.textContent = "transaction"
 
-    let depot = (id, solde) => {
 
-    }
+
     transaction.addEventListener("click", (e) => {
+        comptes.id = prompt("entrer l'id du destinataire")
+        let motant_a_envoyer = Number(prompt("entrer le motant a envoyer"));
+        type = prompt("de quel type de compte disposer vous?");
+        switch (type) {
+            case "epargne":
+                solde.textContent = solde.textContent - (motant_a_envoyer + ((motant_a_envoyer * 30) / 100))
+                if (solde.textContent < 0) {
+                    alert("votre solde est insuffisant entrer un moment alors plus bas ok?")
+                }
 
 
-    })
+                break;
+            case "courant":
+                solde.textContent = solde.textContent - (motant_a_envoyer + ((motant_a_envoyer * 10) / 100))
+                if (solde.textContent < 0) {
+                    alert("votre solde est insuffisant entrer un moment alors plus bas ok?")
+                    solde.textContent = prompt("recrediter votre compte")
+                }
+
+                break;
+            case "gold":
+                solde.textContent = solde.textContent - (motant_a_envoyer)
+                if (solde.textContent < 0) {
+                    alert("votre solde est insuffisant entrer un moment alors plus bas ok?")
+                    solde.textContent = prompt("recrediter votre compte")
+                }
+
+                break;
+
+            default:
+                break;
+        }
+
+
+
+
+    });
     let supprimer = document.createElement("button")
 
-    div_2_Elt.appendChild(supprimer)
+    div_2_Elt.appendChild(supprimer);
     supprimer.textContent = "supprimer"
     supprimer.addEventListener("click", (e) => {
         GrandDiv.textContent = "";
@@ -155,9 +188,9 @@ btn.addEventListener("click", (e) => {
     })
 
 
-    comptes.splice(1, 1)
-    comptes.splice(1, 2)
-    comptes.splice(1, 3)
+    comptes.splice(1, 1);
+    comptes.splice(1, 2);
+    comptes.splice(1, 3);
     comptes.pop()
 
 })
