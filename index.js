@@ -1,27 +1,15 @@
-/* let comptes = [];
-/* crediter() {
-    let credit = Number(prompt("de combien voudrez vous creditez le compte"))
-    this.solde = this.solde + credit;
-/* } */
-//let divElt = document.createElement("div")/* /* /* 
-/* class compte {
-    constructor(id, nom, prenom, age, type) {
-
-        this.id;
+class Compte {
+    constructor(id, nom, prenom, age, profession, type) {
+        this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
+        this.profession = profession;
         this.type = type;
+        this.solde = 0;
     }
-    solde = 0;
+}
 
-
-} */
-
-/* let kodjo = new compte(1, "kdjo", "jkdio", 19, "epargne");
-console.log(kodjo) */
-
-//creation de compte par bouton 
 
 let div_button = document.createElement("div")
 div_button.style.display = "flex"
@@ -46,25 +34,8 @@ btn.addEventListener("click", (e) => {
     let ecris_solde = document.createElement("p")
     ecris_solde.textContent = "solde:"
     solde.textContent = 0;
-    comptes.push(id, nom, prenom, type)
-        /*     class comptess {
-                constructor(id, nom, prenom, age, profession, type, solde) {
-                    this.id = id;
-                    this.nom = nom;
-                    this.prenom = prenom;
-                    this.age = age;
-                    this.profession = profession;
-                    this.type = type;
-                    this.solde = solde;
 
-
-
-
-
-
-                } */
-        /* } */
-
+    comptes.push(new Compte(id, nom, prenom, age, profession, type));
 
     let compte = document.createElement('section')
 
@@ -152,18 +123,20 @@ btn.addEventListener("click", (e) => {
     div_2_Elt.appendChild(transaction);
     transaction.textContent = "transaction"
 
-    transaction.addEventListener("click", (e) => {
-        let idcomptes = Number(prompt("entrer l'id du destinataire"));
 
-        let motant_a_envoyer = Number(prompt("entrer le motant a envoyer"));
+
+    transaction.addEventListener("click", (e) => {
+        let idDestinataire = Number(prompt("Entrer l'id du destinataire"));
+        let motant_a_envoyer = Number(prompt("Entrer le montant à envoyer"));
+        let type = prompt("Quel type de compte possèdez vous?");
+
+
+        // Recherche du compte destinataire par son id
+        let compteDestinataire = comptes.find(compte => compte.id === idDestinataire);
         type = prompt("de quel type de compte disposer vous?");
         let solde_actuel;
         solde_actuel = solde.textContent;
-        if (comptes.id == idcomptes) {
-            console.log("st laa")
-        } else {
-            console.log("riennnnn")
-        }
+
         switch (type) {
 
             case "epargne":
@@ -201,11 +174,18 @@ btn.addEventListener("click", (e) => {
             default:
                 break;
         }
+        if (solde_actuel >= motant_a_envoyer) {
+            solde_actuel -= motant_a_envoyer;
+            compteDestinataire.solde += motant_a_envoyer;
 
 
+            solde.textContent = solde_actuel.toFixed(2);
+            alert("Transaction réussie !");
+
+        }
+    })
 
 
-    });
 
 
     let supprimer = document.createElement("button")
